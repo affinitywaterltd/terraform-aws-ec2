@@ -6,7 +6,7 @@ resource "aws_instance" "default" {
 
   iam_instance_profile  = "${var.iam_role}"
 
-  vpc_security_group_ids= ["${var.security_groups}"]
+  vpc_security_group_ids= "${var.security_groups}"
 
   key_name = "${var.ssh_key_pair}"
   root_block_device {
