@@ -36,7 +36,8 @@ variable "vpc_id" {
 
 variable "security_groups" {
   description = "List of Security Group IDs allowed to connect to the instance"
-  default     = ""
+  type        = list
+  default     = []
 }
 
 variable "subnet_id" {
