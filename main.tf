@@ -1,12 +1,12 @@
 resource "aws_instance" "default" {
-  ami           = "${var.ami}"
-  instance_type = "${var.instance_type}"
+  ami                   = "${var.ami}"
+  instance_type         = "${var.instance_type}"
 
-  subnet_id = "${var.subnet_id}"
+  subnet_id             = "${var.subnet_id}"
 
-  iam_instance_profile = "${var.iam_role}"
+  iam_instance_profile  = "${var.iam_role}"
 
-  security_groups = ["${var.security_groups}"]
+  vpc_security_group_ids= ["${var.security_groups}"]
 
   key_name = "${var.ssh_key_pair}"
   root_block_device {
