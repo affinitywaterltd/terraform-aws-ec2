@@ -10,7 +10,7 @@ locals {
 
 variable "ssh_key_pair" {
   description = "SSH key pair to be provisioned on the instance"
-  default     = "AWDefault"
+  default     = "${var.account}-${var.environment}"
 }
 
 variable "iam_role" {
