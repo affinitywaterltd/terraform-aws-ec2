@@ -15,6 +15,10 @@ resource "aws_instance" "default" {
   tags = "${var.tags}"
 }
 
+lifecycle {
+  ignore_changes = ["ami", "user_data"]
+}
+
 resource "aws_ebs_volume" "default" {
   count             = "${length(var.ebs_volumes)}"               #length of volumes list
   availability_zone = "${local.availability_zone}"

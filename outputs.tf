@@ -8,7 +8,3 @@ output "ec2_id" {
   value       = "${aws_instance.default.id}"
 }
 
-output "ssh_key_pair" {
-  description = "Name of the SSH key pair provisioned on the instance"
-  value       = "${var.ssh_key_pair}"
-}
