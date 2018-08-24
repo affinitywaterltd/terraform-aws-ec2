@@ -13,11 +13,14 @@ resource "aws_instance" "default" {
     volume_type           = "${var.ebs_volume_type}"
   }
   tags = "${var.tags}"
+
+  lifecycle {
+    ignore_changes = ["ami", "user_data"]
+  }
 }
 
-lifecycle {
-  ignore_changes = ["ami", "user_data"]
-}
+
+
 
 resource "aws_ebs_volume" "default" {
   count             = "${length(var.ebs_volumes)}"               #length of volumes list
