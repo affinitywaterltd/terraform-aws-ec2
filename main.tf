@@ -15,12 +15,9 @@ resource "aws_instance" "default" {
   tags = "${var.tags}"
 
   lifecycle {
-    ignore_changes = ["ami", "user_data"]
+    ignore_changes = ["ami", "user_data", "root_block_device"]
   }
 }
-
-
-
 
 resource "aws_ebs_volume" "default" {
   count             = "${length(var.ebs_volumes)}"               #length of volumes list
