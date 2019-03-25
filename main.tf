@@ -16,7 +16,7 @@ resource "aws_instance" "default" {
   tags = "${var.tags}"
 
   lifecycle {
-    ignore_changes = ["ami", "user_data", "root_block_device"]
+    ignore_changes = ["ami", "user_data"]
   }
 }
 
