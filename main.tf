@@ -16,7 +16,7 @@ resource "aws_instance" "default" {
   tags = "${var.tags}"
 
   credit_specification {
-    cpu_credits          = "${var.burst_unlimited}"
+    cpu_credits          = "${var.cpu_credits}"
   }
 
   lifecycle {

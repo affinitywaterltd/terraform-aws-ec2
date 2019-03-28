@@ -101,7 +101,7 @@ variable "delete_on_termination" {
   default     = "true"
 }
 
-variable "burst_unlimited" {
+variable "cpu_credits" {
   description = "Sets whether T2/T3 Unlimited is configured and standard or unlimited for the credit_specification"
   default     = "standard"
 }
