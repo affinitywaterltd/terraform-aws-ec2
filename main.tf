@@ -15,6 +15,10 @@ resource "aws_instance" "default" {
   }
   tags = "${var.tags}"
 
+  credit_specification {
+    cpu_credits          = "${var.burst_unlimited}"
+  }
+
   lifecycle {
     ignore_changes = ["ami", "user_data", "root_block_device"]
   }
