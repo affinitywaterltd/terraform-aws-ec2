@@ -11,7 +11,7 @@ resource "aws_instance" "default" {
   root_block_device {
     volume_size           = "${var.root_volume_size}"
     delete_on_termination = "${var.delete_on_termination}"
-    volume_type           = "${var.ebs_volume_type}"
+    volume_type           = "${var.root_volume_type}"
   }
   tags = "${var.tags}"
 
