@@ -86,8 +86,8 @@ variable "ebs_device_name" {
 }
 
 variable "ebs_volume_type" {
-  description = "The type of EBS volume. Can be standard, gp2 or io1"
-  default     = "gp2"
+  description = "The type of EBS volume. Can be standard, gp2 or st1"
+  default     = []
 }
 
 variable "ebs_volumes" {
