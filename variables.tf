@@ -61,7 +61,7 @@ variable "ami" {
 
 variable "ebs_optimized" {
   description = "Launched EC2 instance will be EBS-optimized"
-  default     = "false"
+  default     = "true"
 }
 
 variable "disable_api_termination" {
@@ -71,7 +71,7 @@ variable "disable_api_termination" {
 
 variable "root_volume_type" {
   description = "Type of root volume. Can be standard, gp2 or io1"
-  default     = "gp2"
+  default     = "standard"
 }
 
 variable "root_volume_size" {
