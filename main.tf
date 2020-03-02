@@ -7,6 +7,7 @@ resource "aws_instance" "default" {
   key_name              = "${var.ssh_key_pair}"
   user_data             = "${var.user_data}"
   ebs_optimized         = "${var.ebs_optimized}"
+  associate_public_ip_address = "${var.associate_public_ip_address}"
   
   root_block_device {
     volume_size           = "${var.root_volume_size}"

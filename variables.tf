@@ -106,3 +106,8 @@ variable "cpu_credits" {
   default     = "standard"
 }
 
+
+variable "associate_public_ip_address" {
+  description = "Associate a public ip address with an instance in a VPC. Boolean value."
+  default     = "false"
+}
