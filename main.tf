@@ -9,7 +9,7 @@ resource "aws_instance" "default" {
   ebs_optimized         = "${var.ebs_optimized}"
   associate_public_ip_address = "${var.associate_public_ip_address}"
   source_dest_check     = "${var.source_dest_check}"
-  private_ips_count     = "${var.private_ips_count}"
+  #private_ips_count     = "${var.private_ips_count}"
 
   root_block_device {
     volume_size           = "${var.root_volume_size}"
