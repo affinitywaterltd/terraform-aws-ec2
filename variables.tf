@@ -111,3 +111,8 @@ variable "associate_public_ip_address" {
   description = "Associate a public ip address with an instance in a VPC. Boolean value."
   default     = "false"
 }
+
+variable "source_dest_check" {
+  description = "Default Network Interface config for source dest check. Boolean value."
+  default     = "true"
+}
