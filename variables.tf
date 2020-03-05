@@ -116,3 +116,8 @@ variable "source_dest_check" {
   description = "Default Network Interface config for source dest check. Boolean value."
   default     = "true"
 }
+
+variable "private_ips_count" {
+  description = "Default count of private IP's assigned to the network interface."
+  default     = "0"
+}
