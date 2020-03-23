@@ -8,6 +8,8 @@ resource "aws_instance" "default" {
   user_data             = "${var.user_data}"
   ebs_optimized         = "${var.ebs_optimized}"
   associate_public_ip_address = "${var.associate_public_ip_address}"
+
+  monitoring            = "${var.monitoring}"
   
   root_block_device {
     volume_size           = "${var.root_volume_size}"

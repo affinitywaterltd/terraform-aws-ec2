@@ -111,3 +111,9 @@ variable "associate_public_ip_address" {
   description = "Associate a public ip address with an instance in a VPC. Boolean value."
   default     = "false"
 }
+
+
+variable "monitoring" {
+  description = "Enabled Detailed Monitoring Cloudwatch metrics"
+  default     = "false"
+}
