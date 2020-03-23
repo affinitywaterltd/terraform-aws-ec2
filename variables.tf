@@ -112,8 +112,12 @@ variable "associate_public_ip_address" {
   default     = "false"
 }
 
+variable "source_dest_check" {
+  description = "Default Network Interface config for source dest check. Boolean value."
+  default     = "true"
+}
 
 variable "monitoring" {
-  description = "Enabled Detailed Monitoring Cloudwatch metrics"
+  description = "Enable cloudwatch detailed monitoring metrics. Boolean value."
   default     = "false"
 }
