@@ -132,11 +132,6 @@ variable "tenancy" {
   default     = "default"
 }
 
-variable "disable_api_termination" {
-  description = "An instance with a tenancy of dedicated runs on single-tenant hardware."
-  default     = "false"
-}
-
 variable "instance_initiated_shutdown_behavior" {
   description = "Shutdown behavior for the instance."
   default     = "stop"
