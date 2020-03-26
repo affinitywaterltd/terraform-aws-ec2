@@ -134,7 +134,7 @@ variable "tenancy" {
 
 variable "instance_initiated_shutdown_behavior" {
   description = "Shutdown behavior for the instance."
-  default     = "stop"
+  default     = ""
 }
 
 variable "encrypted" {
