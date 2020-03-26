@@ -139,7 +139,7 @@ variable "instance_initiated_shutdown_behavior" {
 
 variable "encrypted" {
   description = "Enable volume encryption."
-  default     = "false"
+  default     = "true"
 }
 
 variable "kms_key_id" {
