@@ -121,3 +121,38 @@ variable "monitoring" {
   description = "Enable cloudwatch detailed monitoring metrics. Boolean value."
   default     = "false"
 }
+
+variable "placement_group" {
+  description = "The Placement Group to start the instance in."
+  default     = ""
+}
+
+variable "tenancy" {
+  description = "An instance with a tenancy of dedicated runs on single-tenant hardware."
+  default     = "default"
+}
+
+variable "disable_api_termination" {
+  description = "An instance with a tenancy of dedicated runs on single-tenant hardware."
+  default     = "false"
+}
+
+variable "instance_initiated_shutdown_behavior" {
+  description = "Shutdown behavior for the instance."
+  default     = "stop"
+}
+
+variable "encrypted" {
+  description = "Enable volume encryption."
+  default     = "false"
+}
+
+variable "kms_key_id" {
+  description = "KMS Key to use when encrypting the volume."
+  default     = ""
+}
+
+variable "hibernation" {
+  description = "the launched EC2 instance will support hibernation.."
+  default     = "false"
+}
