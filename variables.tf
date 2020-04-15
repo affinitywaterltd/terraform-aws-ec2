@@ -1,11 +1,13 @@
 data "aws_subnet" "default" {
-  id = "${var.subnet_id}"
+  id = var.subnet_id
 }
-data "aws_caller_identity" "default" {}
+
+data "aws_caller_identity" "default" {
+}
 
 locals {
-  availability_zone = "${var.availability_zone != "" ? var.availability_zone : data.aws_subnet.default.availability_zone}"
-  vpc_id            = "${var.vpc_id != "" ? var.vpc_id : data.aws_subnet.default.vpc_id}"
+  availability_zone = var.availability_zone != "" ? var.availability_zone : data.aws_subnet.default.availability_zone
+  vpc_id            = var.vpc_id != "" ? var.vpc_id : data.aws_subnet.default.vpc_id
 }
 
 variable "ssh_key_pair" {
@@ -17,7 +19,6 @@ variable "iam_role" {
   description = "The IAM role to be attached to the instance"
   default     = "EC2_SSM_Role"
 }
-
 
 variable "user_data" {
   description = "Instance user data. Do not pass gzip-compressed data via this argument"
@@ -36,7 +37,7 @@ variable "vpc_id" {
 
 variable "security_groups_ids" {
   description = "List of Security Group IDs allowed to connect to the instance"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "subnet_id" {
@@ -45,7 +46,7 @@ variable "subnet_id" {
 
 variable "tags" {
   description = "Additional tags"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
@@ -80,7 +81,7 @@ variable "root_volume_size" {
 }
 
 variable "ebs_device_name" {
-  type        = "list"
+  type        = list(string)
   description = "Name of the EBS device to mount"
   default     = ["/dev/xvdb", "/dev/xvdc", "/dev/xvdd", "/dev/xvde", "/dev/xvdf", "/dev/xvdg", "/dev/xvdh", "/dev/xvdi", "/dev/xvdj", "/dev/xvdk", "/dev/xvdl", "/dev/xvdm", "/dev/xvdn", "/dev/xvdo", "/dev/xvdp", "/dev/xvdq", "/dev/xvdr", "/dev/xvds", "/dev/xvdt", "/dev/xvdu", "/dev/xvdv", "/dev/xvdw", "/dev/xvdx", "/dev/xvdy", "/dev/xvdz"]
 }
@@ -92,7 +93,7 @@ variable "ebs_volume_type" {
 
 variable "ebs_volumes" {
   description = "Size of the EBS volumes in gigabytes"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -105,7 +106,6 @@ variable "cpu_credits" {
   description = "Sets whether T2/T3 Unlimited is configured and standard or unlimited for the credit_specification"
   default     = "standard"
 }
-
 
 variable "associate_public_ip_address" {
   description = "Associate a public ip address with an instance in a VPC. Boolean value."
@@ -121,3 +121,34 @@ variable "monitoring" {
   description = "Enable cloudwatch detailed monitoring metrics. Boolean value."
   default     = "false"
 }
+
+variable "placement_group" {
+  description = "The Placement Group to start the instance in."
+  default     = ""
+}
+
+variable "tenancy" {
+  description = "An instance with a tenancy of dedicated runs on single-tenant hardware."
+  default     = "default"
+}
+
+variable "instance_initiated_shutdown_behavior" {
+  description = "Shutdown behavior for the instance."
+  default     = ""
+}
+
+variable "encrypted" {
+  description = "Enable volume encryption."
+  default     = "true"
+}
+
+variable "kms_key_id" {
+  description = "KMS Key to use when encrypting the volume."
+  default     = ""
+}
+
+variable "hibernation" {
+  description = "the launched EC2 instance will support hibernation.."
+  default     = "false"
+}
+
