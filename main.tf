@@ -10,11 +10,13 @@ resource "aws_instance" "default" {
   monitoring                           = var.monitoring
   vpc_security_group_ids               = var.security_groups_ids
   subnet_id                            = var.subnet_id
+  private_ip                           = var.private_ip
   associate_public_ip_address          = var.associate_public_ip_address
   source_dest_check                    = var.source_dest_check
   user_data                            = var.user_data
   iam_instance_profile                 = var.iam_role
   tags                                 = var.tags
+
 
   #volume_tags                          = "${var.tags}"
   hibernation = var.hibernation

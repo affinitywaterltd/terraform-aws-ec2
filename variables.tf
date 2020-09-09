@@ -152,3 +152,7 @@ variable "hibernation" {
   default     = "false"
 }
 
+variable "private_ip" {
+  description = " (Optional) Private IP address to associate with the instance in a VPC."
+  default     = null
+}
