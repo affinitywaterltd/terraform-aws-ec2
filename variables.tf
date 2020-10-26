@@ -91,6 +91,11 @@ variable "ebs_volume_type" {
   default     = []
 }
 
+variable "ebs_volume_encryption" {
+  description = "Whether the attached EBS Volumes are encrypted"
+  default     = true
+}
+
 variable "ebs_volumes" {
   description = "Size of the EBS volumes in gigabytes"
   type        = list(string)
