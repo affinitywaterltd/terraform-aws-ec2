@@ -91,7 +91,7 @@ variable "ebs_volume_type" {
   default     = []
 }
 
-variable "ebs_volume_encryption" {
+variable "ebs_volume_encrypted" {
   description = "Whether the attached EBS Volumes are encrypted"
   default     = true
 }

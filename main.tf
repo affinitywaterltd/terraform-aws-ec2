@@ -50,7 +50,7 @@ resource "aws_ebs_volume" "default" {
 
   #type              = "${var.ebs_volume_type}"
   tags      = var.tags
-  encrypted = var.ebs_volume_encryption
+  encrypted = var.ebs_volume_encrypted
 }
 
 resource "aws_volume_attachment" "default" {
