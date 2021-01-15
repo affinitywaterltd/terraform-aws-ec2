@@ -37,7 +37,7 @@ resource "aws_instance" "default" {
     ignore_changes = [
       ami,
       user_data,
-      #root_block_device
+      root_block_device
     ]
   }
 }
