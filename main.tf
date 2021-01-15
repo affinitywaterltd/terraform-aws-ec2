@@ -18,7 +18,7 @@ resource "aws_instance" "default" {
   tags                                 = var.tags
 
 
-  #volume_tags                          = "${var.tags}"
+  volume_tags                          = var.tags
   hibernation = var.hibernation
 
   root_block_device {
@@ -37,7 +37,7 @@ resource "aws_instance" "default" {
     ignore_changes = [
       ami,
       user_data,
-      root_block_device,
+      #root_block_device,
     ]
   }
 }
