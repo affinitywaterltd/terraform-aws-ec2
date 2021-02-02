@@ -67,8 +67,8 @@ resource "aws_ebs_volume" "default_map" {
   count             = local.is_ebs_map == true ? length(var.ebs_volumes) : 0 #length of volumes list
   availability_zone = local.availability_zone
 
-  size       = lookup(element(var.ebs_volumes, count.index), "size", 0)    #index count
-  type       = lookup(element(var.ebs_volumes, count.index), "type", "standard") #index count
+  size       = try(lookup(element(var.ebs_volumes, count.index), "size", 0), element(var.ebs_volumes, count.index))   #index count
+  type       = try(lookup(element(var.ebs_volumes, count.index), "type", "standard"), element(var.ebs_volume_type, count.index)) #index count
   iops       = lookup(element(var.ebs_volumes, count.index), "iops", null)
   throughput = lookup(element(var.ebs_volumes, count.index), "throughput", null)
 
