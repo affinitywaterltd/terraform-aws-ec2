@@ -69,8 +69,8 @@ resource "aws_ebs_volume" "default_map" {
 
   size       = try(lookup(element(var.ebs_volumes, count.index), "size", 0), element(var.ebs_volumes, count.index))   #index count
   type       = try(lookup(element(var.ebs_volumes, count.index), "type", "standard"), element(var.ebs_volume_type, count.index)) #index count
-  iops       = lookup(element(var.ebs_volumes, count.index), "iops", null)
-  throughput = lookup(element(var.ebs_volumes, count.index), "throughput", null)
+  iops       = try(lookup(element(var.ebs_volumes, count.index), "iops", null), null)
+  throughput = try(lookup(element(var.ebs_volumes, count.index), "throughput", null), null)
 
   tags      = var.tags
   encrypted = var.ebs_volume_encrypted
