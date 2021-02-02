@@ -67,11 +67,11 @@ resource "aws_ebs_volume" "gp3" {
   count             = var.is_gp3_test == true ? length(var.ebs) : 0 #length of volumes list
   availability_zone = local.availability_zone
 
+  size       = lookup(element(var.ebs, count.index), "size", 0)    #index count
+  type       = lookup(element(var.ebs, count.index), "type", "standard") #index count
+  iops       = lookup(element(var.ebs, count.index), "iops", null)
+  throughput = lookup(element(var.ebs, count.index), "throughput", null)
 
-  size              = lookup(element(var.ebs, count.index), "size", 0)    #index count
-  type              = lookup(element(var.ebs, count.index), "type", "standard") #index count
-
-  #type              = "${var.ebs_volume_type}"
   tags      = var.tags
   encrypted = var.ebs_volume_encrypted
 }
