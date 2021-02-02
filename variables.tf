@@ -108,7 +108,7 @@ variable "ebs_volume_encrypted" {
 
 variable "ebs_volumes" {
   description = "Size of the EBS volumes in gigabytes"
-  type        = list(string)
+  type        = any
   default     = []
 }
 
