@@ -45,7 +45,7 @@ resource "aws_instance" "default" {
 }
 
 resource "aws_ebs_volume" "default" {
-  count             = var.is_gp3_test == false ? length(var.ebs_volumes) : 0 #length of volumes list
+  count             = var.is_ebs_map == false ? length(var.ebs_volumes) : 0 #length of volumes list
   availability_zone = local.availability_zone
   size              = element(var.ebs_volumes, count.index)     #index count
   type              = element(var.ebs_volume_type, count.index) #index count
@@ -63,15 +63,15 @@ resource "aws_volume_attachment" "default" {
 }
 
 
-resource "aws_ebs_volume" "gp3" {
-  count             = var.is_gp3_test == true ? length(var.ebs) : 0 #length of volumes list
+resource "aws_ebs_volume" "default_map" {
+  count             = var.is_ebs_map == true ? length(var.ebs_volumes) : 0 #length of volumes list
   availability_zone = local.availability_zone
 
-  size       = lookup(element(var.ebs, count.index), "size", 0)    #index count
-  type       = lookup(element(var.ebs, count.index), "type", "standard") #index count
-  iops       = lookup(element(var.ebs, count.index), "iops", null)
-  throughput = lookup(element(var.ebs, count.index), "throughput", null)
+  size       = lookup(element(var.ebs_volumes, count.index), "size", 0)    #index count
+  type       = lookup(element(var.ebs_volumes, count.index), "type", "standard") #index count
+  iops       = lookup(element(var.ebs_volumes, count.index), "iops", null)
+  throughput = lookup(element(var.ebs_volumes, count.index), "throughput", null)
 
   tags      = var.tags
-  encrypted = local.is_ebs_map
+  encrypted = var.ebs_volume_encrypted
 }
