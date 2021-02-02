@@ -75,6 +75,16 @@ variable "root_volume_type" {
   default     = "standard"
 }
 
+variable "root_volume_iops" {
+  description = "Provisioned IOPS of root volume. Used for gp3, io1 and io2"
+  default     = 3000
+}
+
+variable "root_volume_throughput" {
+  description = "Provisioned Throughput of root volume. Used for gp3"
+  default     = 125
+}
+
 variable "root_volume_size" {
   description = "Size of the root volume in gigabytes"
   default     = "10"
