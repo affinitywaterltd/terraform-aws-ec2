@@ -8,7 +8,7 @@ data "aws_caller_identity" "default" {
 locals {
   availability_zone = var.availability_zone != "" ? var.availability_zone : data.aws_subnet.default.availability_zone
   vpc_id            = var.vpc_id != "" ? var.vpc_id : data.aws_subnet.default.vpc_id
-  is_ebs_map        = try(lookup(element(var.ebs_volumes, count.index), "size", 0) > 0, false)
+  is_ebs_map        = try(lookup(element(var.ebs_volumes, 0), "size") > 0, false)
 }
 
 variable "ssh_key_pair" {
