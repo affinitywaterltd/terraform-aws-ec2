@@ -171,3 +171,14 @@ variable "private_ip" {
   description = " (Optional) Private IP address to associate with the instance in a VPC."
   default     = null
 }
+
+
+variable "is_gp3_test" {
+  description = "Is test instance for gp3"
+  default     = false
+}
+
+variable "ebs" {
+  description = "Is test instance for gp3"
+  default     = null
+}
