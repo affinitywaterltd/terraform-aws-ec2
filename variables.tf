@@ -175,6 +175,7 @@ variable "private_ip" {
 
 variable "is_gp3_test" {
   description = "Is test instance for gp3"
+  type = bool
   default     = false
 }
 
