@@ -27,8 +27,8 @@ resource "aws_instance" "default" {
     delete_on_termination = var.delete_on_termination
     encrypted             = var.encrypted
     kms_key_id            = var.kms_key_id
-    iops                  = contains(["gp3", "io1", "io2"], var.root_volume_type) ? null : var.root_volume_iops
-    throughput            = contains(["gp3"], var.root_volume_type) ? null : var.root_volume_throughput
+    iops                  = contains(["gp3", "io1", "io2"], var.root_volume_type) ? var.root_volume_iops : null
+    throughput            = contains(["gp3"], var.root_volume_type) ? var.root_volume_throughput : null
   }
 
   credit_specification {
