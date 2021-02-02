@@ -73,5 +73,5 @@ resource "aws_ebs_volume" "gp3" {
   throughput = lookup(element(var.ebs, count.index), "throughput", null)
 
   tags      = var.tags
-  encrypted = var.ebs_volume_encrypted
+  encrypted = local.is_ebs_map
 }
