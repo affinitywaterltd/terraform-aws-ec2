@@ -68,8 +68,8 @@ resource "aws_ebs_volume" "gp3" {
   availability_zone = local.availability_zone
 
 
-  size              = lookup(element(var.ebs, count.index).value, "size", 0)    #index count
-  type              = lookup(element(var.ebs, count.index).value, "type", "standard") #index count
+  size              = lookup(values(element(var.ebs, count.index)), "size", 0)    #index count
+  type              = lookup(values(element(var.ebs, count.index)), "type", "standard") #index count
 
   #type              = "${var.ebs_volume_type}"
   tags      = var.tags
