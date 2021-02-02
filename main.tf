@@ -64,7 +64,7 @@ resource "aws_volume_attachment" "default" {
 
 
 resource "aws_ebs_volume" "gp3" {
-  count             = var.is_gp3_test == true ? length(keys(var.ebs)) : {} #length of volumes list
+  count             = var.is_gp3_test == true ? length(keys(var.ebs)) : 0 #length of volumes list
 
   availability_zone = local.availability_zone
   size              = element(var.ebs_volumes, count.index)     #index count
