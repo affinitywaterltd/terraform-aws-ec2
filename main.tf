@@ -45,26 +45,7 @@ resource "aws_instance" "default" {
 }
 
 resource "aws_ebs_volume" "default" {
-  count             = local.is_ebs_map == false ? length(var.ebs_volumes) : 0 #length of volumes list
-  availability_zone = local.availability_zone
-  size              = element(var.ebs_volumes, count.index)     #index count
-  type              = element(var.ebs_volume_type, count.index) #index count
-
-  #type              = "${var.ebs_volume_type}"
-  tags      = var.tags
-  encrypted = var.ebs_volume_encrypted
-}
-
-resource "aws_volume_attachment" "default" {
-  count       = length(var.ebs_volumes)
-  device_name = element(var.ebs_device_name, count.index)
-  volume_id   = element(aws_ebs_volume.default.*.id, count.index)
-  instance_id = aws_instance.default.id
-}
-
-
-resource "aws_ebs_volume" "default_map" {
-  count             = local.is_ebs_map == true ? length(var.ebs_volumes) : 0 #length of volumes list
+  count             = length(var.ebs_volumes) #length of volumes list
   availability_zone = local.availability_zone
 
   size       = try(lookup(element(var.ebs_volumes, count.index), "size", 0), element(var.ebs_volumes, count.index))   #index count
@@ -74,4 +55,11 @@ resource "aws_ebs_volume" "default_map" {
 
   tags      = var.tags
   encrypted = var.ebs_volume_encrypted
+}
+
+resource "aws_volume_attachment" "default" {
+  count       = length(var.ebs_volumes)
+  device_name = element(var.ebs_device_name, count.index)
+  volume_id   = element(aws_ebs_volume.default.*.id, count.index)
+  instance_id = aws_instance.default.id
 }
