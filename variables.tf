@@ -8,7 +8,7 @@ data "aws_caller_identity" "default" {
 locals {
   availability_zone = var.availability_zone != "" ? var.availability_zone : data.aws_subnet.default.availability_zone
   vpc_id            = var.vpc_id != "" ? var.vpc_id : data.aws_subnet.default.vpc_id
-  is_ebs_map        = try(lookup(element(var.ebs, 0), "size", 0) > 0, false)
+  is_ebs_map        = try(lookup(element(var.ebs_volumes, 0), "size", 0) > 0, false)
 }
 
 variable "ssh_key_pair" {
@@ -170,17 +170,5 @@ variable "hibernation" {
 
 variable "private_ip" {
   description = " (Optional) Private IP address to associate with the instance in a VPC."
-  default     = null
-}
-
-
-variable "is_gp3_test" {
-  description = "Is test instance for gp3"
-  type = bool
-  default     = false
-}
-
-variable "ebs" {
-  description = "Is test instance for gp3"
   default     = null
 }
