@@ -68,8 +68,8 @@ resource "aws_ebs_volume" "gp3" {
   availability_zone = local.availability_zone
 
 
-  size              = element(var.ebs, count.index).values.size    #index count
-  type              = element(var.ebs, count.index).values.type #index count
+  size              = element(var.ebs, count.index).value.size    #index count
+  type              = element(var.ebs, count.index).value.type #index count
 
   #type              = "${var.ebs_volume_type}"
   tags      = var.tags
