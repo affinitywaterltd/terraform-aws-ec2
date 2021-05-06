@@ -1,4 +1,4 @@
-# AWS Elastic Cloud Compute EC23) Terraform module
+# AWS Elastic Cloud Compute (EC2) Terraform module
 
 Terraform module which creates EC2 resources on AWS.
 
@@ -161,7 +161,7 @@ This EC2 module does not have conditional creation of the EC2 instance
 | monitoring | Enable cloudwatch detailed monitoring metrics. Boolean value. | `bool` | `false` | no |
 | placement_group | The Placement Group to start the instance in. | `string` | `""` | no |
 | tenancy | An instance with a tenancy of dedicated runs on single-tenant hardware. | `string` | `default` | no |
-| instance_initiated_shutdown_behavior | Shutdown behavior for the instance. | `string` | `""` | no |
+| instance_initiated_shutdown_behavior | Shutdown behaviour for the instance. | `string` | `""` | no |
 | encrypted | Enable volume encryption. | `bool` | `true` | no |
 | kms_key_id | KMS Key to use when encrypting the volume. | `string` | `""` | no |
 | hibernation | The launched EC2 instance will support hibernation. | `bool` | `false` | no |
