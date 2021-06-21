@@ -48,10 +48,10 @@ resource "aws_ebs_volume" "default" {
   count             = length(var.ebs_volumes) #length of volumes list
   availability_zone = local.availability_zone
 
-  size       = try(lookup(element(var.ebs_volumes, count.index), "size", 0), element(var.ebs_volumes, count.index))   #index count
-  type       = try(lookup(element(var.ebs_volumes, count.index), "type", "standard"), element(var.ebs_volume_type, count.index)) #index count
-  iops       = try(lookup(element(var.ebs_volumes, count.index), "iops", null), null)
-  throughput = try(lookup(element(var.ebs_volumes, count.index), "throughput", null), null)
+  size       = try(lookup(var.ebs_volumes[count.index], "size", 0), var.ebs_volumes[count.index])   #index count
+  type       = try(lookup(var.ebs_volumes[count.index], "type", "standard"), var.ebs_volumes[count.index]) #index count
+  iops       = try(lookup(var.ebs_volumes[count.index], "iops", null), null)
+  throughput = try(lookup(var.ebs_volumes[count.index], "throughput", null), null)
 
   tags      = var.tags
   encrypted = var.ebs_volume_encrypted
@@ -59,7 +59,7 @@ resource "aws_ebs_volume" "default" {
 
 resource "aws_volume_attachment" "default" {
   count       = length(var.ebs_volumes)
-  device_name = element(var.ebs_device_name, count.index)
-  volume_id   = element(aws_ebs_volume.default.*.id, count.index)
+  device_name = var.ebs_device_name[count.index]
+  volume_id   = aws_ebs_volume.default[*].id[count.index]
   instance_id = aws_instance.default.id
 }
