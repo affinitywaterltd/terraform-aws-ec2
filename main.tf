@@ -49,7 +49,7 @@ resource "aws_ebs_volume" "default" {
   availability_zone = local.availability_zone
 
   size       = try(lookup(var.ebs_volumes[count.index], "size", 0), var.ebs_volumes[count.index])   #index count
-  type       = try(lookup(var.ebs_volumes[count.index], "type", "standard"), var.ebs_volumes[count.index]) #index count
+  type       = try(lookup(var.ebs_volumes[count.index], "type", "standard"), var.ebs_volumes_type[count.index]) #index count
   iops       = try(lookup(var.ebs_volumes[count.index], "iops", null), null)
   throughput = try(lookup(var.ebs_volumes[count.index], "throughput", null), null)
 
