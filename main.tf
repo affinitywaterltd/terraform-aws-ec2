@@ -59,7 +59,7 @@ resource "aws_ebs_volume" "default" {
 
 resource "aws_volume_attachment" "default" {
   count       = length(var.ebs_volumes)
-  device_name = var.ebs_device_name[count.index]
+  device_name = try(lookup(var.ebs_volumes[count.index], "device_name"), var.ebs_device_name[count.index])
   volume_id   = aws_ebs_volume.default.*.id[count.index]
   instance_id = aws_instance.default.id
 }
