@@ -168,6 +168,11 @@ This EC2 module does not have conditional creation of the EC2 instance
 | private_ip | (Optional) Private IP address to associate with the instance in a VPC. | `string` | `null` | no |
 | tags | A mapping of tags to assign to all resources | `map(string)` | `{}` | no |
 
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| iam_role | The IAM role to be attached to the instance | `string` | `EC2_SSM_Role` | no |
+
 ## Outputs
 
 | Name | Description |

@@ -77,12 +77,12 @@ variable "root_volume_type" {
 
 variable "root_volume_iops" {
   description = "Provisioned IOPS of root volume. Used for gp3, io1 and io2"
-  default     = 0
+  default     = null
 }
 
 variable "root_volume_throughput" {
   description = "Provisioned Throughput of root volume. Used for gp3"
-  default     = 0
+  default     = null
 }
 
 variable "root_volume_size" {
