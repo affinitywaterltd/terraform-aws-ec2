@@ -38,8 +38,7 @@ resource "aws_instance" "default" {
   lifecycle {
     ignore_changes = [
       ami,
-      user_data,
-      root_block_device
+      user_data
     ]
   }
 }
