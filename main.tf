@@ -39,7 +39,7 @@ resource "aws_instance" "default" {
     ignore_changes = [
       ami,
       user_data,
-      root_block_device["encrypted"]
+      root_block_device
     ]
   }
 }
