@@ -162,7 +162,7 @@ This EC2 module does not have conditional creation of the EC2 instance
 | placement_group | The Placement Group to start the instance in. | `string` | `""` | no |
 | tenancy | An instance with a tenancy of dedicated runs on single-tenant hardware. | `string` | `default` | no |
 | instance_initiated_shutdown_behavior | Shutdown behaviour for the instance. | `string` | `""` | no |
-| encrypted | Enable volume encryption. | `bool` | `true` | no |
+| root_volume_encrypted | Enable volume encryption of the root volume. | `bool` | `true` | no |
 | kms_key_id | KMS Key to use when encrypting the volume. | `string` | `""` | no |
 | hibernation | The launched EC2 instance will support hibernation. | `bool` | `false` | no |
 | private_ip | (Optional) Private IP address to associate with the instance in a VPC. | `string` | `null` | no |

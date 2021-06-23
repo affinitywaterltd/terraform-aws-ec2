@@ -152,8 +152,8 @@ variable "instance_initiated_shutdown_behavior" {
   default     = ""
 }
 
-variable "encrypted" {
-  description = "Enable volume encryption."
+variable "root_volume_encrypted" {
+  description = "Enable volume encryption for root volume."
   default     = "true"
 }
 
