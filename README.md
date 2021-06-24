@@ -176,6 +176,7 @@ Below are the configuration parameters for ebs_volumes when used as a map
 | type | The type of EBS volume. Can be standard, gp2, gp3, st1, io1 or io2 | `string` | `standard` | no |
 | iops | Provisioned IOPS of root volume. Used for gp3, io1 and io2 | `number` | `null` | no |
 | throughput | Provisioned Throughput of root volume. Used for gp3 | `number` | `null` | no |
+| device_name | Device name for EBS volume attachment (e.g /dev/xvdb) | `string` | `var.ebs_device_name` | no |
 
 ## Outputs
 
