@@ -148,7 +148,7 @@ This EC2 module does not have conditional creation of the EC2 instance
 | ebs_device_name | Name of the EBS device to mount | `list(string)` | `["/dev/xvdb", "/dev/xvdc", "/dev/xvdd", "/dev/xvde", "/dev/xvdf", "/dev/xvdg", "/dev/xvdh", "/dev/xvdi", "/dev/xvdj", "/dev/xvdk", "/dev/xvdl", "/dev/xvdm", "/dev/xvdn", "/dev/xvdo", "/dev/xvdp", "/dev/xvdq", "/dev/xvdr", "/dev/xvds", "/dev/xvdt", "/dev/xvdu", "/dev/xvdv", "/dev/xvdw", "/dev/xvdx", "/dev/xvdy", "/dev/xvdz"]` | no |
 | ebs_volume_type | The type of EBS volume. Can be standard, gp2 or st1 | `list` | `[]` | no |
 | ebs_volume_encrypted | Whether the attached EBS Volumes are encrypted | `bool` | `true` | no |
-| ebs_volumes | Contains a list of objects with the volume definitions (ebs_volumes = [{size = 2, type = "gp3" }] or a list with the size of the EBS volumes in gigabytes (ebs_volumes = [10, 20, 30]) | `any` | `[]` | no |
+| ebs_volumes | [Configuration options below](#ebs_volumes) Contains a list of objects with the volume definitions (ebs_volumes = [{size = 2, type = "gp3" }] or a list with the size of the EBS volumes in gigabytes (ebs_volumes = [10, 20, 30]) | `any` | `[]` | no |
 | availability_zone | Availability Zone the instance is launched in. If not set, will be launched in the first AZ of the region | `string` | `none` | yes |
 | ebs_optimized | Launched EC2 instance will be EBS-optimized | `bool` | `true` | no |
 | disable_api_termination | Enable EC2 Instance Termination Protection | `bool` | `false` | no |
@@ -168,10 +168,14 @@ This EC2 module does not have conditional creation of the EC2 instance
 | private_ip | (Optional) Private IP address to associate with the instance in a VPC. | `string` | `null` | no |
 | tags | A mapping of tags to assign to all resources | `map(string)` | `{}` | no |
 
-
+## ebs_volumes
+Below are the configuration parameters for ebs_volumes when used as a map
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| iam_role | The IAM role to be attached to the instance | `string` | `EC2_SSM_Role` | no |
+| size | Size of the EBS volume in gigabytes | `number` | `0` | yes |
+| type | The type of EBS volume. Can be standard, gp2, gp3, st1, io1 or io2 | `string` | `standard` | no |
+| iops | Provisioned IOPS of root volume. Used for gp3, io1 and io2 | `number` | `null` | no |
+| throughput | Provisioned Throughput of root volume. Used for gp3 | `number` | `null` | no |
 
 ## Outputs
 
